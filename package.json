@@ -1,0 +1,31 @@
+{
+  "name": "portfolio-website",
+  "version": "1.0.0",
+  "description": "High-quality portfolio with GSAP animations",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "keywords": [],
+  "author": "Keshav Sharma",
+  "license": "ISC",
+  "dependencies": {
+    "framer-motion": "^12.23.24",
+    "gsap": "^3.13.0",
+    "next": "^15.5.4",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-scroll-parallax": "^3.5.0",
+    "react-type-animation": "^3.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.7.2",
+    "@types/react": "19.2.2",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
+    "typescript": "5.9.3"
+  }
+}
