@@ -27,10 +27,12 @@ export default function AnimatedBackground() {
       opacity: number
 
       constructor() {
-        this.x = Math.random() * canvas.width
-        this.y = Math.random() * canvas.height
-        this.targetX = Math.random() * canvas.width
-        this.targetY = Math.random() * canvas.height
+        const width = canvas?.width || window.innerWidth
+        const height = canvas?.height || window.innerHeight
+        this.x = Math.random() * width
+        this.y = Math.random() * height
+        this.targetX = Math.random() * width
+        this.targetY = Math.random() * height
         this.speed = 0.1 + Math.random() * 0.2
         this.opacity = 0.02 + Math.random() * 0.03
       }
@@ -43,8 +45,10 @@ export default function AnimatedBackground() {
         this.y += dy * this.speed * 0.01
 
         if (Math.abs(dx) < 1 && Math.abs(dy) < 1) {
-          this.targetX = Math.random() * canvas.width
-          this.targetY = Math.random() * canvas.height
+          const width = canvas?.width || window.innerWidth
+          const height = canvas?.height || window.innerHeight
+          this.targetX = Math.random() * width
+          this.targetY = Math.random() * height
         }
       }
 
