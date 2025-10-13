@@ -18,6 +18,9 @@ export default function AnimatedBackground() {
     }
     setSize()
 
+    // TypeScript needs to know canvas is not null in the class scope
+    const canvasElement = canvas
+
     class FlowLine {
       x: number
       y: number
@@ -27,12 +30,10 @@ export default function AnimatedBackground() {
       opacity: number
 
       constructor() {
-        const width = canvas?.width || window.innerWidth
-        const height = canvas?.height || window.innerHeight
-        this.x = Math.random() * width
-        this.y = Math.random() * height
-        this.targetX = Math.random() * width
-        this.targetY = Math.random() * height
+        this.x = Math.random() * canvasElement.width
+        this.y = Math.random() * canvasElement.height
+        this.targetX = Math.random() * canvasElement.width
+        this.targetY = Math.random() * canvasElement.height
         this.speed = 0.1 + Math.random() * 0.2
         this.opacity = 0.02 + Math.random() * 0.03
       }
@@ -45,10 +46,8 @@ export default function AnimatedBackground() {
         this.y += dy * this.speed * 0.01
 
         if (Math.abs(dx) < 1 && Math.abs(dy) < 1) {
-          const width = canvas?.width || window.innerWidth
-          const height = canvas?.height || window.innerHeight
-          this.targetX = Math.random() * width
-          this.targetY = Math.random() * height
+          this.targetX = Math.random() * canvasElement.width
+          this.targetY = Math.random() * canvasElement.height
         }
       }
 
