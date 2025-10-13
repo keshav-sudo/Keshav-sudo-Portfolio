@@ -146,7 +146,7 @@ export default function HeroSection() {
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
                 <a 
-                  href="https://github.com/thesharmakeshav" 
+                  href="https://github.com/keshav-sudo" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="group relative p-3 border border-white/25 hover:border-white/50 transition-all duration-500 hover:bg-white/8 backdrop-blur-sm hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]"
