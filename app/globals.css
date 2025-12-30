@@ -85,9 +85,11 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 9999;
 }
 
+/* Disabled: Custom cursor conflicts with Ubuntu desktop
 * {
   cursor: none;
 }
+*/
 
 /* Cards */
 .minimal-card {

@@ -1,6 +1,4 @@
-'use client'
 
-import { motion } from 'framer-motion'
 
 interface BrowserAppProps {
   url: string
@@ -44,7 +42,7 @@ export default function BrowserApp({ url, title }: BrowserAppProps) {
   const siteKey = getSiteKey(url)
   const info = siteInfo[siteKey] || { icon: '🌐', color: '#E95420', description: 'Open this website' }
 
-  const handleOpen = () => {
+  const handleOpenExternal = () => {
     window.open(url, '_blank', 'noopener,noreferrer')
   }
 
@@ -79,65 +77,27 @@ export default function BrowserApp({ url, title }: BrowserAppProps) {
           <span className="text-white/60 text-sm truncate">{url}</span>
         </div>
 
-        {/* Bookmark */}
-        <button className="p-1.5 rounded hover:bg-white/10 text-white/40">
+        {/* Open in New Tab Button */}
+        <button 
+          onClick={handleOpenExternal}
+          className="p-1.5 rounded hover:bg-white/10 text-white/60 hover:text-white transition-colors"
+          title="Open in new tab"
+        >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
           </svg>
         </button>
       </div>
 
-      {/* Content - Nice Preview Card */}
-      <div className="flex-1 flex items-center justify-center p-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.4 }}
-          className="max-w-md w-full"
-        >
-          {/* Site Card */}
-          <div 
-            className="rounded-2xl p-8 text-center border border-white/10 shadow-2xl"
-            style={{ backgroundColor: info.color + '20' }}
-          >
-            {/* Icon */}
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
-              className="text-7xl mb-6"
-            >
-              {info.icon}
-            </motion.div>
-
-            {/* Title */}
-            <h1 className="text-2xl font-bold text-white mb-2">{title}</h1>
-            
-            {/* URL */}
-            <p className="text-white/50 text-sm mb-4 font-mono">{url}</p>
-            
-            {/* Description */}
-            <p className="text-white/70 mb-8">{info.description}</p>
-
-            {/* Open Button */}
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={handleOpen}
-              className="inline-flex items-center gap-3 px-8 py-4 bg-[#E95420] hover:bg-[#E95420]/90 text-white font-medium rounded-xl transition-colors shadow-lg"
-            >
-              <span>Open {title.split(' ')[0]}</span>
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-            </motion.button>
-          </div>
-
-          {/* Security Notice */}
-          <p className="text-white/30 text-xs text-center mt-4">
-            🔒 Opens in a secure new tab
-          </p>
-        </motion.div>
+      {/* Embedded Website Content */}
+      <div className="flex-1 relative bg-white overflow-hidden">
+        <iframe
+          src={url}
+          className="w-full h-full border-0"
+          title={title}
+          sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+          loading="lazy"
+        />
       </div>
     </div>
   )
