@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   },
 }
 
+import { PortfolioProvider } from './context/PortfolioContext'
+import { DesktopProvider } from './context/DesktopContext'
+
 export default function RootLayout({
   children,
 }: {
@@ -20,7 +23,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <PortfolioProvider>
+          <DesktopProvider>{children}</DesktopProvider>
+        </PortfolioProvider>
+      </body>
     </html>
   )
 }

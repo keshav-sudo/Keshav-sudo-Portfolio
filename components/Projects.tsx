@@ -1,32 +1,11 @@
 'use client'
 
 import { motion } from 'framer-motion'
-
-const projects = [
-  {
-    title: 'DoctorPatient',
-    year: '2024',
-    description: 'Enterprise healthcare platform with JWT authentication, role-based access, appointment scheduling, and prescription management. Backend deployed on Render with PostgreSQL.',
-    tech: ['TypeScript', 'Node.js', 'Prisma', 'PostgreSQL', 'JWT', 'Express'],
-    github: 'https://github.com/keshav-sudo/DoctorPateint',
-    demo: 'https://doctor-pateint.vercel.app/',
-  },
-  {
-    title: 'SocialHub',
-    year: '2024',
-    description: 'Distributed social network with microservices architecture, Kafka event streaming, Redis Pub/Sub for real-time features, and hybrid MongoDB/PostgreSQL database strategy.',
-    tech: ['Docker', 'Nginx', 'TypeScript', 'Kafka', 'Redis', 'MongoDB', 'PostgreSQL'],
-    github: 'https://github.com/keshav-sudo/socialHub',
-  },
-  {
-    title: 'Trading Platform',
-    year: '2024',
-    description: 'High-performance cryptocurrency trading platform with real-time market data, WebSocket integration, and secure transaction handling.',
-    tech: ['TypeScript', 'WebSocket', 'Redis', 'PostgreSQL', 'Docker'],
-  },
-]
+import { usePortfolio } from '../app/context/PortfolioContext'
 
 export default function Projects() {
+  const { projects } = usePortfolio()
+
   return (
     <section id="projects" className="min-h-screen py-32 px-6 md:px-12 relative z-10">
       <div className="max-w-7xl mx-auto">
@@ -45,7 +24,7 @@ export default function Projects() {
         <div className="space-y-1">
           {projects.map((project, index) => (
             <motion.div
-              key={index}
+              key={project.id || index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}

@@ -2,19 +2,19 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import UbuntuBoot from './ubuntu/components/UbuntuBoot'
-import UbuntuDesktop from './ubuntu/components/UbuntuDesktop'
+import UbuntuBoot from './components/UbuntuBoot'
+import UbuntuDesktop from './components/UbuntuDesktop'
 
-export default function Home() {
+export default function UbuntuPortfolio() {
   const [isBooting, setIsBooting] = useState(true)
   const [showDesktop, setShowDesktop] = useState(false)
 
   useEffect(() => {
-    // Simulate realistic boot sequence (4 seconds)
+    // Simulate boot sequence
     const bootTimer = setTimeout(() => {
       setIsBooting(false)
-      setTimeout(() => setShowDesktop(true), 400)
-    }, 4000)
+      setTimeout(() => setShowDesktop(true), 500)
+    }, 3000)
 
     return () => clearTimeout(bootTimer)
   }, [])
@@ -27,7 +27,8 @@ export default function Home() {
             key="boot"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0, transition: { duration: 0.3 } }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
           >
             <UbuntuBoot />
           </motion.div>
@@ -38,9 +39,9 @@ export default function Home() {
         {showDesktop && (
           <motion.div
             key="desktop"
-            initial={{ opacity: 0, scale: 1.02 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
           >
             <UbuntuDesktop />
           </motion.div>
