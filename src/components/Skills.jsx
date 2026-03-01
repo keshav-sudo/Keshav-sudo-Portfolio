@@ -78,33 +78,37 @@ export default function Skills() {
                     </p>
                 </motion.div>
 
-                <div className="skills-grid">
-                    {skillGroups.map((group, gi) => (
-                        <motion.div
-                            key={group.label}
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={inView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.5, delay: gi * 0.1 }}
-                            className="skill-group glass"
-                        >
-                            <div className="skill-group-header">
-                                <span className="skill-icon">{group.icon}</span>
-                                <span className="skill-group-label">{group.label}</span>
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6 }}
+                    className="skills-single-div glass"
+                >
+                    <div className="skills-content-wrapper">
+                        {skillGroups.map((group) => (
+                            <div key={group.label} className="skill-category">
+                                <h3 className="skill-category-title">
+                                    <span className="skill-category-icon">{group.icon}</span>
+                                    {group.label}
+                                </h3>
+                                <div className="skill-tags">
+                                    {group.skills.map(skill => (
+                                        <span
+                                            key={skill}
+                                            className="skill-tag"
+                                            style={{
+                                                background: colorMap[group.color],
+                                                borderColor: borderMap[group.color]
+                                            }}
+                                        >
+                                            {skill}
+                                        </span>
+                                    ))}
+                                </div>
                             </div>
-                            <div className="skill-tags">
-                                {group.skills.map(skill => (
-                                    <span
-                                        key={skill}
-                                        className="skill-tag"
-                                        style={{ background: colorMap[group.color], borderColor: borderMap[group.color] }}
-                                    >
-                                        {skill}
-                                    </span>
-                                ))}
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
+                        ))}
+                    </div>
+                </motion.div>
             </div>
         </section>
     );

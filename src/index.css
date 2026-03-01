@@ -2,6 +2,7 @@
 
 /* ─── Design Tokens ─── */
 :root {
+  --layout-border: 40px;
   /* Backgrounds */
   --bg: #F7F8FA;
   --bg-card: #ffffff;
@@ -17,8 +18,9 @@
 
   /* Text */
   --text: #111111;
-  --text-secondary: #6B7280;
-  --text-muted: #9CA3AF;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+  --text-dim: #9ca3af;
 
   /* Borders & Shadows */
   --border: #E5E7EB;
@@ -59,6 +61,8 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 body {
@@ -67,9 +71,19 @@ body {
   background: var(--bg);
   line-height: 1.6;
   font-size: 16px;
+  border-left: var(--layout-border) solid #87ceeb;
+  border-right: var(--layout-border) solid #87ceeb;
+  min-height: 100vh;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   line-height: 1.2;
@@ -323,7 +337,7 @@ ol {
 }
 
 .bg-grid {
-  background-image: 
+  background-image:
     linear-gradient(var(--border) 1px, transparent 1px),
     linear-gradient(90deg, var(--border) 1px, transparent 1px);
   background-size: 32px 32px;
@@ -331,19 +345,69 @@ ol {
 
 /* ─── Animations ─── */
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-10px);
   }
 }
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.5;
+  }
+}
+
+/* ── Mobile Optimizations ── */
+@media (max-width: 768px) {
+  :root {
+    --layout-border: 16px;
+  }
+
+  body {
+    border-left: var(--layout-border) solid #87ceeb;
+    border-right: var(--layout-border) solid #87ceeb;
+  }
+
+  .section {
+    padding: 80px 0;
+  }
+
+  .section-title {
+    font-size: clamp(32px, 8vw, 40px);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --layout-border: 8px;
+  }
+
+  body {
+    border-left: var(--layout-border) solid #87ceeb;
+    border-right: var(--layout-border) solid #87ceeb;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .section {
+    padding: 60px 0;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
   }
 }

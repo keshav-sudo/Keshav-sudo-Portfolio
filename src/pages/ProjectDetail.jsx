@@ -136,6 +136,7 @@ export default function ProjectDetail() {
     };
 
     const hasArch = !!project.excalidrawScene;
+    const [isEditingArch, setIsEditingArch] = useState(false);
 
     return (
         <div className="pd-page">
@@ -246,11 +247,18 @@ export default function ProjectDetail() {
                         >
                             <div className="pdc-head-row">
                                 <div className="pdc-head"><Layers size={16} /> System Architecture</div>
-                                {hasArch && (
-                                    <button className="expand-btn" onClick={() => setFullscreen(true)}>
-                                        <Maximize2 size={14} /> Fullscreen
-                                    </button>
-                                )}
+                                <div style={{ display: 'flex', gap: '8px' }}>
+                                    {isAuthenticated && (
+                                        <button className="expand-btn" onClick={() => setIsEditingArch(!isEditingArch)}>
+                                            <Upload size={14} /> {hasArch ? 'Edit' : 'Add'}
+                                        </button>
+                                    )}
+                                    {hasArch && (
+                                        <button className="expand-btn" onClick={() => setFullscreen(true)}>
+                                            <Maximize2 size={14} /> Fullscreen
+                                        </button>
+                                    )}
+                                </div>
                             </div>
 
                             {hasArch ? (
@@ -265,24 +273,28 @@ export default function ProjectDetail() {
                                     <Layers size={40} className="ph-icon" />
                                     <p className="ph-title">No diagram yet</p>
                                     <p className="ph-desc">
-                                        {isAuthenticated
-                                            ? 'Upload your .excalidraw file below to render the architecture diagram.'
-                                            : 'Architecture diagram coming soon.'}
+                                        Architecture diagram coming soon.
                                     </p>
                                 </div>
                             )}
                         </motion.div>
 
                         {/* Import panel — admin only */}
-                        {isAuthenticated && (
-                            <motion.div
-                                initial={{ opacity: 0, y: 16 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.2 }}
-                            >
-                                <ImportPanel project={project} onSave={saveScene} />
-                            </motion.div>
-                        )}
+                        <AnimatePresence>
+                            {isAuthenticated && isEditingArch && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    exit={{ opacity: 0, height: 0 }}
+                                    transition={{ duration: 0.3 }}
+                                    style={{ overflow: 'hidden' }}
+                                >
+                                    <div style={{ paddingTop: '8px' }}>
+                                        <ImportPanel project={project} onSave={saveScene} />
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
 
                     </div>
                 </div>

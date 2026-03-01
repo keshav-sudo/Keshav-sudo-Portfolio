@@ -20,17 +20,13 @@ export default function Hero() {
                             Available for opportunities
                         </div>
 
-                        <p className="hero-greeting">
-                            👋 Hi, I'm Keshav
-                        </p>
-
-                        <h1 className="hero-name">
+                        <h1 className="hero-name" style={{ marginTop: '20px' }}>
                             Keshav Sharma<span className="name-dash">--</span>
                         </h1>
 
-                        <h2 className="hero-title">
-                            <span className="title-word">Backend</span> <span className="title-word">Engineer</span><br />
-                            <span className="title-word highlight">Bareilly</span> <span className="title-word highlight">India</span>
+                        <h2 className="hero-title" style={{ fontSize: 'clamp(36px, 10vw, 84px)', lineHeight: '1.1' }}>
+                            <span className="title-word">Software</span> <br />
+                            <span className="title-word highlight">Engineer</span>
                         </h2>
 
                         <p className="hero-description">
@@ -38,9 +34,9 @@ export default function Hero() {
                         </p>
 
                         <div className="hero-actions">
-                            <a 
-                                href="https://drive.google.com/file/d/YOUR_RESUME_ID/view" 
-                                target="_blank" 
+                            <a
+                                href="https://drive.google.com/file/d/YOUR_RESUME_ID/view"
+                                target="_blank"
                                 rel="noopener noreferrer"
                                 className="btn btn-primary"
                             >
@@ -57,9 +53,9 @@ export default function Hero() {
                         className="hero-visual"
                     >
                         <div className="hero-image-wrapper">
-                            <img 
-                                src="/customization-right.webp" 
-                                alt="Developer Illustration" 
+                            <img
+                                src="/customization-right.webp"
+                                alt="Developer Illustration"
                                 className="hero-illustration"
                             />
                         </div>

@@ -41,9 +41,8 @@ export default function Navbar() {
             className={`navbar ${scrolled ? 'scrolled' : ''}`}
         >
             <div className="nav-inner">
-                <Link to="/" className="nav-logo">
-                    <span className="logo-text">Keshav Sharma</span>
-                    <span className="logo-dot">.</span>
+                <Link to="/" className="nav-logo" style={{ textDecoration: 'none' }}>
+                    <span className="logo-text" style={{ fontSize: '1.2rem', fontWeight: '500' }}>👋 Hi, I'm Keshav</span>
                 </Link>
 
                 <ul className="nav-links">

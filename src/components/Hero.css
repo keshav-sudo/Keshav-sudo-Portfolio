@@ -180,8 +180,13 @@
     animation: float 4s ease-in-out infinite;
 }
 
-.badge-2 {480px;
-    height: auto
+.badge-2 {
+    bottom: 20%;
+    right: -5%;
+    animation: float 5s ease-in-out infinite;
+}
+
+.scroll-arrow {
     left: 50%;
     transform: translateX(-50%);
     width: 4px;
@@ -192,10 +197,13 @@
 }
 
 @keyframes scroll-down {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateX(-50%) translateY(0);
         opacity: 1;
     }
+
     50% {
         transform: translateX(-50%) translateY(12px);
         opacity: 0;
@@ -224,7 +232,7 @@
     }
 
     .hero-image-wrapper {
-        max-width: 400px;
+        max-width: 250px;
         margin: 0 auto;
     }
 }
@@ -242,5 +250,9 @@
     .hero-actions .btn {
         width: 100%;
         justify-content: center;
+    }
+
+    .hero-image-wrapper {
+        max-width: 200px;
     }
 }

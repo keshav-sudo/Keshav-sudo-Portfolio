@@ -1,8 +1,8 @@
 .navbar {
     position: fixed;
     top: 0;
-    left: 0;
-    right: 0;
+    left: var(--layout-border, 0);
+    right: var(--layout-border, 0);
     z-index: 100;
     background: rgba(247, 248, 250, 0.9);
     backdrop-filter: blur(20px);
@@ -175,7 +175,7 @@
 
 @media (max-width: 768px) {
     .nav-inner {
-        padding: 0 24px;
+        padding: 0 16px;
     }
 
     .nav-links,
@@ -185,5 +185,9 @@
 
     .nav-menu-btn {
         display: flex;
+    }
+
+    .mobile-menu {
+        padding: 16px 20px 24px;
     }
 }
