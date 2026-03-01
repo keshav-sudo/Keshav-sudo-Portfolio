@@ -289,7 +289,7 @@ export default function GitHub() {
                             <div className="gh-card-head"><Calendar size={14} /> Contribution Graph</div>
                             <div className="gh-contrib-wrap">
                                 <img
-                                    src={`https://ghchart.rshah.org/f97316/${USERNAME}`}
+                                    src={`https://ghchart.rshah.org/2563EB/${USERNAME}`}
                                     alt="GitHub contribution chart"
                                     className="gh-contrib-img"
                                     loading="lazy"
